@@ -34,7 +34,9 @@ const App = {
   methods: {
     prev() {
       // когда нажимаем кнопку назад
-      this.activeIndex--
+      if (this.activeIndex !== 0) {
+        this.activeIndex--
+      }
     },
     reset() {
       // начать заново
