@@ -70,20 +70,9 @@ const App = {
       return this.activeIndex === 0
     },
     nextText() {
-      if (this.activeIndex < this.steps.length -1) {
-        return 'Вперед'
-      }
-      else {
-        return 'Закончить'
+      return this.activeIndex < this.steps.length -1 ? 'Вперед' : 'Закончить'
       }
     }
-  }
-
-
-// тут стоит определить несколько свойств:
-// 1. текущий выбранный шаг
-// 2. выключена ли кнопка назад
-// 3. находимся ли мы на последнем шаге
 }
 
 
