@@ -46,7 +46,7 @@ const App = {
     },
     nextOrFinish() {
       // кнопка вперед или закончить
-      if (this.activeIndex < this.steps.length -1) {
+      if (this.activeIndex < this.steps.length - 1) {
         this.activeIndex++
       } else {
         this.newCycle = true
@@ -72,9 +72,12 @@ const App = {
       return this.activeIndex === 0
     },
     nextText() {
-      return this.activeIndex < this.steps.length -1 ? 'Вперед' : 'Закончить'
-      }
+      return this.activeIndex < this.steps.length - 1 ? 'Вперед' : 'Закончить'
+    },
+    currentText() {
+      return this.steps[this.activeIndex].text
     }
+  }
 }
 
 
