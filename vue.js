@@ -6,6 +6,7 @@ const App = {
   data() {
     return {
       activeIndex: 0, // то, что позволяет определить текущий активный шаг
+      newCycle: false,
       steps: [
         {
           title: 'Основы',
@@ -28,7 +29,6 @@ const App = {
           text: 'Одним из наиболее важных обновлений в Vue 3 является появление альтернативного синтаксиса Composition API. В этом блоке вы узнаете все, чтобы полностью пользоваться данными синтаксисом на практических примерах. Помимо этого вы узнаете как работать совместно с Vue Router и Vuex.'
         },
       ],
-
     }
   },
   methods: {
@@ -38,10 +38,17 @@ const App = {
     },
     reset() {
       // начать заново
+      this.activeIndex = 0
+      this.newCycle = false
+
     },
     nextOrFinish() {
       // кнопка вперед или закончить
-      this.activeIndex++
+      if (this.activeIndex < this.steps.length -1) {
+        this.activeIndex++
+      } else {
+        this.newCycle = true
+      }
     },
     setActive(idx) {
       // когда нажимаем на определенный шаг
@@ -62,6 +69,14 @@ const App = {
     prevDisabled() {
       return this.activeIndex === 0
     },
+    nextText() {
+      if (this.activeIndex < this.steps.length -1) {
+        return 'Вперед'
+      }
+      else {
+        return 'Закончить'
+      }
+    }
   }
 
 

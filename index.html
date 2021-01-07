@@ -25,9 +25,12 @@
 
           ><span>{{ idx + 1 }}</span> {{ item.title }}</li>
         </ul>
-        <div>
+        <div v-if="!newCycle">
           <button class="btn" @click='prev' :disabled='prevDisabled'>Назад</button>
-          <button class="btn primary" @click='nextOrFinish'>Вперед</button>
+          <button class="btn primary" @click='nextOrFinish'>{{ nextText }}</button>
+        </div>
+        <div v-else>
+          <button class="btn" @click='reset' :disabled='prevDisabled'>Начать заново</button>
         </div>
       </div>
     </div>
