@@ -56,16 +56,6 @@ const App = {
       // когда нажимаем на определенный шаг
       this.activeIndex = idx
     },
-    status(idx) {
-      let res = 'active'
-      if (idx < this.activeIndex) {
-        res = 'done'
-      }
-      if (idx > this.activeIndex) {
-        res = ''
-      }
-      return res
-    }
   },
   computed: {
     prevDisabled() {

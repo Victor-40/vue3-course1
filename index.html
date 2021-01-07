@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Основы Vue</title>
-    <link rel="stylesheet" href="theme.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="theme.css"/>
+</head>
+<body>
 
-  <div class="container" id="app" v-cloak>
+<div class="container" id="app" v-cloak>
     <div class="card">
-      <h1>План по изучению Vue.js</h1>
+        <h1>План по изучению Vue.js</h1>
 
-      <div class="steps">
-        <div class="steps-content">
-          {{ currentText }}
-        </div>
+        <div class="steps">
+            <div class="steps-content">
+                {{ currentText }}
+            </div>
 
-        <ul class="steps-list" >
-          <li class="steps-item"
-              v-for="(item, idx) in steps"
-              :class="status(idx)"
-              @click="setActive(idx)"
-
-          ><span>{{ idx + 1 }}</span> {{ item.title }}</li>
-        </ul>
-        <div v-if="!newCycle">
-          <button class="btn" @click='prev' :disabled='prevDisabled'>Назад</button>
-          <button class="btn primary" @click='nextOrFinish'>{{ nextText }}</button>
+            <ul class="steps-list">
+                <li class="steps-item"
+                    v-for="(item, idx) in steps"
+                    :class="{'done': activeIndex > idx, 'active': activeIndex === idx}"
+                    @click="setActive(idx)"
+                    :key="item.title"
+                >
+                    <span>{{ idx + 1 }}</span> {{ item.title }}
+                </li>
+            </ul>
+            <div v-if="!newCycle">
+                <button class="btn" @click='prev' :disabled='prevDisabled'>Назад</button>
+                <button class="btn primary" @click='nextOrFinish'>{{ nextText }}</button>
+            </div>
+            <div v-else>
+                <button class="btn" @click='reset' :disabled='prevDisabled'>Начать заново</button>
+            </div>
         </div>
-        <div v-else>
-          <button class="btn" @click='reset' :disabled='prevDisabled'>Начать заново</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <script src="https://unpkg.com/vue@next"></script>
-  <script src="vue.js"></script>
-  </body>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="vue.js"></script>
+</body>
 </html>
